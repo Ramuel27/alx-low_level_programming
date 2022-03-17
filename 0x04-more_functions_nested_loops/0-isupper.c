@@ -1,22 +1,18 @@
-#include "holberton.h"
+#include "main.h"
+#include <stdio.h>
 
 /**
- * _isupper - checks for uppercase character
- * @c: the character to be checked of int type
- * Return: 1 if c is uppercase and 0 otherwise
+ * main - check the code.
+ *
+ * Return: Always 0.
  */
-int _isupper(int c)
+int main(void)
 {
-	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int i;
+    char c;
 
-	for (i = 0; i < 26; i++)
-	{
-		if (c == alpha[i])
-		{
-			return (1);
-		}
-	}
-
-	return (0);
-}
+    c = 'A';
+    printf("%c: %d\n", c, _isupper(c));
+    c = 'a';
+    printf("%c: %d\n", c, _isupper(c));
+    return (0);
+}x
