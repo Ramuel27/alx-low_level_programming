@@ -1,35 +1,49 @@
-#include "holberton.h"
-
+#include "main.h"
+#include <stdio.h>
 /**
- * print_number - printing number with puts
- *
- * @n: input int
+ * print_number - Print an integer using only _putchar
+ * @n: integer to print
  */
+
 void print_number(int n)
 {
-	/*Declaring variables*/
-	int count = 0, pow = 1;
-	unsigned int num = n;
+	int power;
+	int neg;
+	int hold;
 
-
-	if (n < 0) /*Evaluate this condition*/
+	neg = 0;
+	power = 1;
+	hold = n;
+	if (n < 0)
 	{
 		_putchar('-');
-		num = -n;
+		neg = 1;
 	}
-	while (n != 0)
+
+	while (hold > 9 || hold < -9)
 	{
-		n /= 10;
-		count++;
+		power *= 10;
+		hold /= 10;
 	}
-	while (count > 1)
+
+	while (power > 0)
 	{
-		pow *= 10;
-		count--;
-	}
-	while (pow >= 1)
-	{
-		_putchar(num / pow % 10 + '0');
-		pow /= 10;
+		if (power > 9)
+		{
+			if (!neg)
+				_putchar((n / power % 10) + '0');
+			else
+				_putchar((n / power % 10) * -1 + '0');
+
+			power /= 10;
+		}
+		if (power == 1)
+		{
+			if (neg)
+				_putchar((n % 10) * -1 + '0');
+			else
+				_putchar(n % 10 + '0');
+			power = 0;
+		}
 	}
 }
